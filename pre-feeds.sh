@@ -22,3 +22,7 @@ git clone https://github.com/zzsj0928/luci-app-serverchand
 git clone https://github.com/siropboy/luci-theme-btmod 
 git clone https://github.com/kenzok8/small.git package/small
 git clone https://github.com/fw876/helloworld.git package/openwrt-packages/luci-app-ssr-plus
+
+set -e -x
+
+true
