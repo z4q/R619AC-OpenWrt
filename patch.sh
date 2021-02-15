@@ -385,18 +385,6 @@ define Device/p2w_r619ac
 endef
 TARGET_DEVICES += p2w_r619ac
 
-define Device/p2w_r619ac-128m
-	$(call Device/FitzImage)
-	$(call Device/UbiFit)
-	DEVICE_TITLE := P&W R619AC
-	DEVICE_DTS := qcom-ipq4019-r619ac-128m
-	DEVICE_DTS_CONFIG := config@10
-	BLOCKSIZE := 128k
-	PAGESIZE := 2048
-	DEVICE_PACKAGES := ipq-wifi-p2w_r619ac
-endef
-TARGET_DEVICES += p2w_r619ac-128m
-
 $(eval $(call BuildImage))' >> target/linux/ipq40xx/image/Makefile
 
-sed -i 's/qcom-ipq4019-a62.dtb/qcom-ipq4019-a62.dtb qcom-ipq4019-r619ac.dtb qcom-ipq4019-r619ac-128m.dtb/' target/linux/ipq40xx/patches-4.14/901-arm-boot-add-dts-files.patch
+sed -i 's/qcom-ipq4019-a62.dtb/qcom-ipq4019-a62.dtb qcom-ipq4019-r619ac.dtb/' target/linux/ipq40xx/patches-4.14/901-arm-boot-add-dts-files.patch
