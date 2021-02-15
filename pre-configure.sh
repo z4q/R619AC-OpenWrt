@@ -17,12 +17,15 @@ sed -i 's/OpenWrt/OurtechHome/g' package/base-files/files/bin/config_generate
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/lean/luci-theme-opentomcat
 git clone https://github.com/garypang13/luci-theme-edge.git package/lean/luci-theme-edge
 
-echo '修改wifi名称'
+echo 'Change Wifi Name'
 sed -i 's/OpenWrt/OurtechHome/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
-echo '修改banner'
-rm -rf package/base-files/files/etc/banner
-cp -f ../banner package/base-files/files/etc/
+# echo 'Change banner'
+# rm -rf package/base-files/files/etc/banner
+# cp -f ../banner package/base-files/files/etc/
+
+echo 'Change TimeZone'
+sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Kuala_Lumpur'/g" package/base-files/files/bin/config_generate
 
 curl --retry 5 -L "https://downloads.openwrt.org/releases/$(printf "%s" "$REPO_BRANCH" | cut -c 2-)/targets/ipq40xx/generic/config.buildinfo" > .config
 sed -e '/^CONFIG_TARGET_DEVICE_/d' -e '/CONFIG_TARGET_ALL_PROFILES=y/d' -i .config
